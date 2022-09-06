@@ -14,7 +14,7 @@
 header {
     background-color: rgb(100, 100, 160);
     min-height: 15vh;
-    margin-bottom: 10vh;
+    margin-bottom: 6vh;
     
 }
 
@@ -24,6 +24,7 @@ header h1 {
     width: fit-content;
     font-size: 50px;
     padding-top: 2vh;
+    box-shadow: inset;
 }
 
 .my {
@@ -33,6 +34,7 @@ header h1 {
 
 .card {
     border: solid;
+    border-width: 2px;
     border-radius: 5px;
     width: fit-content;
     height: fit-content;
@@ -64,7 +66,7 @@ header h1 {
 
 .card-bottom-text {
     background-color:white;
-    margin: 3vh;
+    margin: 2vh;                       
 }
 
 .card-bottom h3 {
