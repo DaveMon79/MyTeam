@@ -4,14 +4,9 @@ const fs = require("fs")
 const Manager = require("./lib/Manager")
 const Engineer = require("./lib/Engineer")
 const Intern = require("./lib/Intern")
-
-const my = require("./src/generateHTML")
-
-// const managerCard = my.managerCard
-// const engineerCard = require("./src/generateHTML")
-// const internCard = require("./src/generateHTML")
-// const generateTeam = require("./src/generateHTML")
-// const generateString = require("./src/generateHTML")
+const generatePage = require("./src/generateHTML")
+const generateTeam = require("./src/generateHTML")
+const generateHTML = require("./src/generateHTML")
 
 const teamArray = []
 
@@ -149,13 +144,14 @@ internPrompt = (response) => {
 }
 
 createTeam = () => {
-    console.log(teamArray)
-    my.generatePage(teamArray)
-
-    fs.writeFile('./dist/team.html', my.generateTeam(my.generateHTML, "UTF-8"), (err) =>
+    generatePage()
+    console.log("index createTeam")
+    
+    fs.writeFile('./dist/team.html', generateTeam(generateHTML), (err) =>
         err ? console.log(err) : console.log('Successfully created team.html!')
     )
 }
 
 start();
 
+module.exports = teamArray

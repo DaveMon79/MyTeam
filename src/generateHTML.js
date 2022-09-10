@@ -1,43 +1,46 @@
+const teamArray = require("../index")
+
 const teamHTML = []
 const generateHTML = teamHTML.join('')
 
-
-
-generatePage = (teamArray) => {
+generatePage = () => {
 console.log(teamArray)
 
+const teamHTML = []
+
+
 for (let i = 0; i < teamArray.length; i++) {
-    if (teamArray.getRole === "Manager"){
-        managerCard(teamArray[i])
+    if (teamArray === "Manager"){
+        managerCard(teamArray.Manager[i])
 
     }
-    if (teamArray.getRole === "Engineer"){
-        engineerCard(teamArray[i])
+    if (teamArray === "Engineer"){
+        engineerCard(teamArray.Engineer[i])
     }
-    if (teamArray.getRole === "Intern"){
-        internCard(teamArray[i])
+    if (teamArray === "Intern"){
+        internCard(teamArray.Intern[i])
     }
 
 }
 
-managerCard = () => {
+managerCard = (Manager) => {
 
     let managerHTML =`
     <div class="card" id="manager">
     <div class="card-top">
         <div class="name-title">
-            <h2>${managers.name}</h2>
+            <h2>${Manager.name}</h2>
             <h2>Manager</h2>
         </div>
     </div>
    
     <div class="card-bottom">
         <div class="card-bottom-text">
-            <h3>ID: <span>${managers.id}</span></h3>
+            <h3>ID: <span>${Manager.id}</span></h3>
             <hr>
-            <h3>Email: <a href="mailto:${managers.email}">${managers.email}</a></h3>
+            <h3>Email: <a href="mailto:${Manager.email}">${Manager.email}</a></h3>
             <hr>
-            <h3>Office number:<span>${managers.office}</span></h3>
+            <h3>Office number:<span>${Manager.office}</span></h3>
        </div>
     </div>  
    </div>`;
@@ -48,7 +51,7 @@ managerCard = () => {
 }
 
 
-engineerCard = () => {
+engineerCard = Engineer => {
     let engineerHTML =`
   <div class="card" id="engineer">
  <div class="card-top">
@@ -131,7 +134,10 @@ generateTeam = () => {
 }
 
 
-module.exports = {generateTeam, generateHTML, generatePage}
+module.exports = generateTeam
+module.exports = generateHTML
+module.exports = generatePage
+
 
 
 
