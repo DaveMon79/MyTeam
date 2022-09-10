@@ -1,20 +1,28 @@
 const inquirer = require("inquirer")
 const fs = require("fs")
-const generateHTML = require("./src/generateHTML")
-const Employee = require("./lib/Employee")
+
 const Manager = require("./lib/Manager")
 const Engineer = require("./lib/Engineer")
 const Intern = require("./lib/Intern")
 
-const myTeam = []
+const my = require("./src/generateHTML")
+
+// const managerCard = my.managerCard
+// const engineerCard = require("./src/generateHTML")
+// const internCard = require("./src/generateHTML")
+// const generateTeam = require("./src/generateHTML")
+// const generateString = require("./src/generateHTML")
+
+const teamArray = []
+
 
 const startQuestion = [
     {
-        type: 'list',
-        message: 'Would you like to add an employee or create team?',
+        type:'list',
+        message:'Would you like to add an employee or create team?',
         choices: ['Add employee',
-            'Create MyTeam'],
-        name: 'start',
+                  'Create MyTeam'],
+        name:'start',
     },
 ]
 
@@ -23,9 +31,9 @@ const employeeQuestions = [
         type: 'list',
         message: 'What type of employee would you like to add?',
         choices: ['Manager',
-            'Engineer',
-            'Intern'],
-        name: 'job',
+                  'Engineer',
+                  'Intern'],
+        name: 'jobTitle',
     },
     {
         type: 'input',
@@ -78,7 +86,7 @@ start = () => {
         .then((response) => {
 
             if (response.start === 'Add employee') {
-                employeeNew()
+                employeePromt()
             }
             else if (response.start === 'Create MyTeam') {
                 createTeam()
@@ -86,70 +94,68 @@ start = () => {
 
 }
 
-const employeeNew = () => {
+employeePromt= () => {
     inquirer
         .prompt(employeeQuestions)
         .then((response) => {
 
-            console.log(response)
             if (response.jobTitle === "Manager") {
-                managerNew(response)
+                managerPrompt(response)
             }
             else if (response.jobTitle === "Engineer") {
-                engineerNew(response)
+                engineerPrompt(response)
             }
             else if (response.jobTitle === "Intern") {
-                internNew(response)
+                internPrompt(response)
             }
         })
+        
 }
 
-
-managerNew = (response) => {
+managerPrompt = (response) => {
     inquirer
         .prompt(managerQuestion)
         .then((responseManager) => {
             let newManager = new Manager(response.name, response.id, response.email, responseManager.office)
-            myTeam.push(newManager);
+            teamArray.push(newManager);
             start()
         })
 
 }
 
-
-engineerNew = (response) => {
+engineerPrompt = (response) => {
     inquirer
         .prompt(engineerQuestion)
         .then((responseEngineer) => {
             let newEngineer = new Engineer(response.name, response.id, response.email, responseEngineer.github)
-            myTeam.push(newEngineer);
+            teamArray.push(newEngineer);
             start()
 
         })
 
 }
 
-internNew = (response) => {
+internPrompt = (response) => {
     inquirer
         .prompt(internQuestion)
         .then((responseIntern) => {
             let newIntern = new Intern(response.name, response.id, response.email, responseIntern.school)
-            myTeam.push(newIntern);
+            teamArray.push(newIntern)
             start()
-
-
+         
         })
 
 
 }
 
 createTeam = () => {
-    fs.writeFile('./dist/team.html', generateHTML(response), (err) =>
-        err ? console.log(err) : console.log('Successfully created test.html!')
+    console.log(teamArray)
+    my.generatePage(teamArray)
+
+    fs.writeFile('./dist/team.html', my.generateTeam(my.generateHTML, "UTF-8"), (err) =>
+        err ? console.log(err) : console.log('Successfully created team.html!')
     )
 }
 
 start();
-
-
 
