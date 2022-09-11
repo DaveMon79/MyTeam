@@ -1,9 +1,8 @@
 // Variable to which will hold an array of card strings
 let teamHTML = []
-let team = ""
+
 // Function which takes the teamArray from promt questions to makes a final 
 generatePage = (teamArray) => {
-    console.log(teamArray)
 
 // Takes Manager selctions to create a string of Managers and pushes them to team string
 managerCard = (teamArray) => {
@@ -98,6 +97,7 @@ teamHTML.push(internHTML)
 
 }
 
+console.log(teamHTML)
 
     let team = `<!DOCTYPE html>
     <html lang="en">
@@ -126,7 +126,7 @@ teamHTML.push(internHTML)
     </html>`;
     
     console.log(team)
-    // createTeam()
+    createTeam(team)
     
 }
 
@@ -134,3 +134,5 @@ teamHTML.push(internHTML)
 // exports functions
 module.exports = generatePage
 // module.exports = generateTeam
+
+

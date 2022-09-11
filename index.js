@@ -4,7 +4,7 @@ const fs = require("fs")
 const Manager = require("./lib/Manager")
 const Engineer = require("./lib/Engineer")
 const Intern = require("./lib/Intern")
-const finalTeam = require("./src/generateHTML.js")
+const generatePage = require("./src/generateHTML.js")
 // const generateTeam = require("./src/generateHTML.js")
 
 // Array to hold all team information
@@ -146,7 +146,7 @@ internPrompt = (response) => {
 // This takes all user info and generates the final HTML page
 createTeam = (team) => {
    
-    fs.writeFile('./dist/team.html', finalTeam(team, "UTF-8"), (err) =>
+    fs.writeFile('./dist/team.html', generatePage(team, "UTF-8"), (err) =>
         err ? console.log(err) : console.log('Successfully created team.html!')
     )
 }
