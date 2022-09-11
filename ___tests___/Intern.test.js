@@ -1,15 +1,15 @@
-const Intern = require("../lib/Engineer");
+const Intern = require("../lib/Intern");
 
 test("Testing school works", () => {
-    const school = "https://github.com/DaveMon79";
-    const newIntern = new Intern("Dave", 0, "davemonaghan@gmx.com", school);
-    expect(newIntern.school).toBe(school);
+    const internSchool = "Kingsway";
+    const newIntern = new Intern("Dave", 0, "davemonaghan@gmx.com", internSchool);
+    expect(newIntern.school).toBe(internSchool);
 });
 
 test("Testing school() method works", () => {
-    const school = "Dave";
-    const newIntern = new Intern("Dave", 0, "davemonaghan@gmx.com", school);
-    expect(newIntern.getSchool()).toBe(school);
+    const internSchool = "Kingsway";
+    const newIntern = new Intern("Dave", 0, "davemonaghan@gmx.com", internSchool);
+    expect(newIntern.getSchool()).toBe(internSchool);
 });
 
 test("Testing role() method works", () => {

@@ -1,8 +1,9 @@
 // Variable to which will hold an array of card strings
 let teamHTML = []
-
+let team = ""
 // Function which takes the teamArray from promt questions to makes a final 
 generatePage = (teamArray) => {
+    console.log(teamArray)
 
 // Takes Manager selctions to create a string of Managers and pushes them to team string
 managerCard = (teamArray) => {
@@ -28,7 +29,6 @@ managerCard = (teamArray) => {
    </div>`;
 
    teamHTML.push(managerHTML)
-
 
 }
 
@@ -81,70 +81,56 @@ internCard = (teamArray) => {
 </div>`
 
 teamHTML.push(internHTML)
-
 }
 
 // Loops through all user selections and send them to the relevent card function
-for (let i = 0; i < teamArray.length; i++) {
+    for (let i = 0; i < teamArray.length; i++) {
+ 
     if (teamArray[i].getRole() === "Manager"){
         managerCard(teamArray[i])
     }
-    else if (teamArray[i].getRole() === "Engineer"){
+    if (teamArray[i].getRole() === "Engineer"){
         engineerCard(teamArray[i])
     }
-    else if (teamArray[i].getRole() === "Intern"){
+    if (teamArray[i].getRole() === "Intern"){
         internCard(teamArray[i])
     }
 
 }
 
-// Joins final team in to a string
 
-teamHTML.join('')
- return teamHTML
-
+    let team = `<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../src/style.css">
+        <title>MyTeam</title>
+    
+        <header>
+            <h1><span class="my">My</span>Team</h1>
+        </header>
+    </head>
+    <body>
+    
+        <section class="card-section">
+          
+        ${teamHTML}
+    
+        </section>
+    
+    
+    </body>
+    </html>`;
+    
+    console.log(team)
+    // createTeam()
+    
 }
-
-// Takes the final team string and inserts it to the HTML page and return to createTeam function
-generateTeam = () => {
-
-let team = `<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../src/style.css">
-    <title>MyTeam</title>
-
-    <header>
-        <h1><span class="my">My</span>Team</h1>
-    </header>
-</head>
-<body>
-
-    <section class="card-section">
-      
-    // ${generatPage(teamHTML)}
-
-    </section>
-
-
-</body>
-</html>`
-
-return team
-
-
-
-}
-
-
-
 
 
 // exports functions
 module.exports = generatePage
 // module.exports = generateTeam
-// ${teamHTML}

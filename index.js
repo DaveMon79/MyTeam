@@ -1,12 +1,11 @@
 // Importing files, classes and functions
 const inquirer = require("inquirer")
 const fs = require("fs")
-
 const Manager = require("./lib/Manager")
 const Engineer = require("./lib/Engineer")
 const Intern = require("./lib/Intern")
-const generatePage = require("./src/generateHTML")
-const generateTeam = require("./src/generateHTML")
+const finalTeam = require("./src/generateHTML.js")
+// const generateTeam = require("./src/generateHTML.js")
 
 // Array to hold all team information
 const teamArray = []
@@ -146,8 +145,8 @@ internPrompt = (response) => {
 
 // This takes all user info and generates the final HTML page
 createTeam = (team) => {
-    generateTeam(teamHTML)
-    fs.writeFile('./dist/team.html', generateTeam(team, "UTF-8"), (err) =>
+   
+    fs.writeFile('./dist/team.html', finalTeam(team, "UTF-8"), (err) =>
         err ? console.log(err) : console.log('Successfully created team.html!')
     )
 }
