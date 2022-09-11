@@ -1,3 +1,4 @@
+/* basic styling for page */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -5,12 +6,14 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+/* Display the card in a row spaced evenly */
 .card-section {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
 }
 
+/* Styling for header */
 header {
     background-color: rgb(100, 100, 160);
     min-height: 15vh;
@@ -18,6 +21,7 @@ header {
     
 }
 
+/* Styling for text in header */
 header h1 {
     color: beige;
     margin: auto;
@@ -27,11 +31,13 @@ header h1 {
     box-shadow: inset;
 }
 
+/* sytling for my text in header text */
 .my {
     font-size:65px;
     color: rgb(190, 176, 176);
 }
 
+/* Sets height and baroder for cards */
 .card {
     border: solid;
     border-width: 2px;
@@ -42,39 +48,46 @@ header h1 {
 
 }
 
+/* Background colour for the top section of cards */
 .card-top {
     background-color: rgb(100, 100, 160);
 
 }
 
+/* font styinlg in top section of cards */
 .card-top {
     color: beige;
     padding: 10px;
 
 }
 
+/* padding for card top */
 .card-top h2 {
     padding: 0.5vh;
 
 }
 
+/* Centres text in card top section */
+.name-title {
+    text-align: center
+}
+
+/* background colour for outer card bottom  */
 .card-bottom {
     padding: 10px;
     background-color:rgb(223, 216, 216);
 
 }
 
+/* background colour for text in car bottom  */
 .card-bottom-text {
     background-color:white;
     margin: 2vh;                       
 }
 
+/* margin and padding for text in card bottom */
 .card-bottom h3 {
     padding: 2vh;
     margin: 5px;
     
-}
-
-.name-title {
-    text-align: center
 }

@@ -1,3 +1,4 @@
+// Importing files, classes and functions
 const inquirer = require("inquirer")
 const fs = require("fs")
 
@@ -6,11 +7,11 @@ const Engineer = require("./lib/Engineer")
 const Intern = require("./lib/Intern")
 const generatePage = require("./src/generateHTML")
 const generateTeam = require("./src/generateHTML")
-const generateHTML = require("./src/generateHTML")
 
+// Array to hold all team information
 const teamArray = []
 
-
+// Variables containing all questions to get team info from user
 const startQuestion = [
     {
         type:'list',
@@ -73,23 +74,23 @@ const internQuestion = [
     },
 ]
 
-
-
+// Inquirer promts which uses question variables to get team info from user
 start = () => {
     inquirer
         .prompt(startQuestion)
         .then((response) => {
 
             if (response.start === 'Add employee') {
-                employeePromt()
+                employeePrompt()
             }
             else if (response.start === 'Create MyTeam') {
-                createTeam()
+                generatePage(teamArray)
+          
         }})
 
 }
 
-employeePromt= () => {
+employeePrompt= () => {
     inquirer
         .prompt(employeeQuestions)
         .then((response) => {
@@ -143,15 +144,13 @@ internPrompt = (response) => {
 
 }
 
-createTeam = () => {
-    generatePage()
-    console.log("index createTeam")
-    
-    fs.writeFile('./dist/team.html', generateTeam(generateHTML), (err) =>
+// This takes all user info and generates the final HTML page
+createTeam = (team) => {
+    generateTeam(teamHTML)
+    fs.writeFile('./dist/team.html', generateTeam(team, "UTF-8"), (err) =>
         err ? console.log(err) : console.log('Successfully created team.html!')
     )
 }
 
+// Calls the start function to begin
 start();
-
-module.exports = teamArray
