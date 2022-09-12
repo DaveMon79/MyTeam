@@ -3,25 +3,16 @@
 This weeks assignment was to build a Node.js command-line application that takes in information about employees on a software engineering team and generates an HTML webpage that displays summaries for each person. 
   
 
-# Description
+# Description - Object-Oriented Programming Challenge: Team Profile Generator
 
-GIVEN a command-line application that accepts user input
-WHEN I am prompted for my team members and their information
-THEN an HTML file is generated that displays a nicely formatted team roster based on user input
-WHEN I click on an email address in the HTML
-THEN my default email program opens and populates the TO field of the email with the address
-WHEN I click on the GitHub username
-THEN that GitHub profile opens in a new tab
-WHEN I start the application
-THEN I am prompted to enter the team manager’s name, employee ID, email address, and office number
-WHEN I enter the team manager’s name, employee ID, email address, and office number
-THEN I am presented with a menu with the option to add an engineer or an intern or to finish building my team
-WHEN I select the engineer option
-THEN I am prompted to enter the engineer’s name, ID, email, and GitHub username, and I am taken back to the menu
-WHEN I select the intern option
-THEN I am prompted to enter the intern’s name, ID, email, and school, and I am taken back to the menu
-WHEN I decide to finish building my team
-THEN I exit the application, and the HTML is generated
+The application had to incorperate the following features
+
+* Use inquirer to prompt the user for information to build the team in the command line
+* Generate a HTML page with the users information
+* If you click on the email address a default email program opens and populates the TO field of the email with the address
+* If you click on the GitHub user name it takes you to their GitHub page 
+* We had to run successful tests on the Emloyee, Manager, Engineer and Intern classes we'd built.
+
   
 ## Table of Contents
   
@@ -45,15 +36,16 @@ To use this application you will need to install node.js, inquirer and Jest.
   
 # Usage
   
-To use this appilcation. Open terminal and tyre in node index.js, this will generate the team html page. To run tests on the employee classes, type in npm test.  
+To use this appilcation. Open terminal and type "node index.js", this will generate the team html page. To run tests on the employee classes, type in "npm test".  
 
 # License
+
+![License](https://img.shields.io/badge/License-mit-orange.svg)
   
 This project is licensed under:
     
 [MIT](https://opensource.org/licenses/MIT)
 
-![License](https://img.shields.io/badge/License-mit-orange.svg)
 
 # Screenshot
 

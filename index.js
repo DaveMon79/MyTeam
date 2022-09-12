@@ -5,7 +5,6 @@ const Manager = require("./lib/Manager")
 const Engineer = require("./lib/Engineer")
 const Intern = require("./lib/Intern")
 const generatePage = require("./src/generateHTML.js")
-// const generateTeam = require("./src/generateHTML.js")
 
 // Array to hold all team information
 const teamArray = []
@@ -13,11 +12,11 @@ const teamArray = []
 // Variables containing all questions to get team info from user
 const startQuestion = [
     {
-        type:'list',
-        message:'Would you like to add an employee or create team?',
+        type: 'list',
+        message: 'Would you like to add an employee or create team?',
         choices: ['Add employee',
-                  'Create MyTeam'],
-        name:'start',
+            'Create MyTeam'],
+        name: 'start',
     },
 ]
 
@@ -26,8 +25,8 @@ const employeeQuestions = [
         type: 'list',
         message: 'What type of employee would you like to add?',
         choices: ['Manager',
-                  'Engineer',
-                  'Intern'],
+            'Engineer',
+            'Intern'],
         name: 'jobTitle',
     },
     {
@@ -83,13 +82,15 @@ start = () => {
                 employeePrompt()
             }
             else if (response.start === 'Create MyTeam') {
-                generatePage(teamArray)
-          
-        }})
+                createTeam(teamArray)
+
+
+            }
+        })
 
 }
 
-employeePrompt= () => {
+employeePrompt = () => {
     inquirer
         .prompt(employeeQuestions)
         .then((response) => {
@@ -104,7 +105,7 @@ employeePrompt= () => {
                 internPrompt(response)
             }
         })
-        
+
 }
 
 managerPrompt = (response) => {
@@ -137,7 +138,7 @@ internPrompt = (response) => {
             let newIntern = new Intern(response.name, response.id, response.email, responseIntern.school)
             teamArray.push(newIntern)
             start()
-         
+
         })
 
 
@@ -145,8 +146,8 @@ internPrompt = (response) => {
 
 // This takes all user info and generates the final HTML page
 createTeam = (team) => {
-   
-    fs.writeFile('./dist/team.html', generatePage(team, "UTF-8"), (err) =>
+
+    fs.writeFile('./dist/team.html', generatePage(teamArray, team, "UTF-8"), (err) =>
         err ? console.log(err) : console.log('Successfully created team.html!')
     )
 }

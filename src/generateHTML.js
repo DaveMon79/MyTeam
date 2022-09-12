@@ -1,104 +1,101 @@
 // Variable to which will hold an array of card strings
 let teamHTML = []
 
-// Function which takes the teamArray from promt questions to makes a final 
-generatePage = (teamArray) => {
-
-// Takes Manager selctions to create a string of Managers and pushes them to team string
 managerCard = (teamArray) => {
 
-    let managerHTML =`
-    <div class="card" id="manager">
-    <div class="card-top">
-        <div class="name-title">
-            <h2>${teamArray.name}</h2>
-            <h2>Manager</h2>
-        </div>
+    let managerHTML = `
+<div class="card" id="manager">
+<div class="card-top">
+    <div class="name-title">
+        <h2>${teamArray.name}</h2>
+        <h2>Manager</h2>
     </div>
-   
-    <div class="card-bottom">
-        <div class="card-bottom-text">
-            <h3>ID: <span>${teamArray.id}</span></h3>
-            <hr>
-            <h3>Email: <a href="mailto:${teamArray.email}">${teamArray.email}</a></h3>
-            <hr>
-            <h3>Office number:<span>${teamArray.office}</span></h3>
-       </div>
-    </div>  
-   </div>`;
+</div>
 
-   teamHTML.push(managerHTML)
+<div class="card-bottom">
+    <div class="card-bottom-text">
+        <h3>ID: <span>${teamArray.id}</span></h3>
+        <hr>
+        <h3>Email: <a href="mailto:${teamArray.email}">${teamArray.email}</a></h3>
+        <hr>
+        <h3>Office number:<span>${teamArray.office}</span></h3>
+   </div>
+</div>  
+</div>`;
+
+    teamHTML.push(managerHTML)
 
 }
 
 // Takes Manager selctions to create a string of Engineers and pushes them to team string
 engineerCard = (teamArray) => {
-    let engineerHTML =`
-  <div class="card" id="engineer">
- <div class="card-top">
-     <div class="name-title">
-         <h2>${teamArray.name}</h2>
-         <h2>Engineer</h2>
-     </div>
+    let engineerHTML = `
+<div class="card" id="engineer">
+<div class="card-top">
+ <div class="name-title">
+     <h2>${teamArray.name}</h2>
+     <h2>Engineer</h2>
  </div>
+</div>
 
- <div class="card-bottom">
-     <div class="card-bottom-text">
-         <h3>ID: <span>${teamArray.id}</span></h3>
-         <hr>
-         <h3>Email: <a href="mailto:${teamArray.email}">${teamArray.email}</a></h3>
-         <hr>
-         <h3>GitHub: <a href="https://github.com/${teamArray.github}">${teamArray.github}</a></h3>
-     </div>
+<div class="card-bottom">
+ <div class="card-bottom-text">
+     <h3>ID: <span>${teamArray.id}</span></h3>
+     <hr>
+     <h3>Email: <a href="mailto:${teamArray.email}">${teamArray.email}</a></h3>
+     <hr>
+     <h3>GitHub: <a href="https://github.com/${teamArray.github}">${teamArray.github}</a></h3>
  </div>
+</div>
 </div>`;
 
-teamHTML.push(engineerHTML)
+    teamHTML.push(engineerHTML)
 
 }
 
 // Takes Manager selctions to create a string of Interns and pushes them to team string
 internCard = (teamArray) => {
-    let internHTML =`
-    <div class="card" id="intern">
-        <div class="card-top">
-            <div class="name-title">
-                <h2>${teamArray.name}</h2>
-                <h2>Intern</h2>
-             </div>
+    let internHTML = `
+<div class="card" id="intern">
+    <div class="card-top">
+        <div class="name-title">
+            <h2>${teamArray.name}</h2>
+            <h2>Intern</h2>
          </div>
-
- <div class="card-bottom">
-     <div class="card-bottom-text">
-         <h3>ID: <span>${teamArray.id}</span></h3>
-         <hr>
-         <h3>Email: <a href="mailto:${teamArray.email}">${teamArray.email}</a></h3>
-         <hr>
-         <h3>School: <span>${teamArray.school}</span></h3>
      </div>
+
+<div class="card-bottom">
+ <div class="card-bottom-text">
+     <h3>ID: <span>${teamArray.id}</span></h3>
+     <hr>
+     <h3>Email: <a href="mailto:${teamArray.email}">${teamArray.email}</a></h3>
+     <hr>
+     <h3>School: <span>${teamArray.school}</span></h3>
  </div>
+</div>
 </div>`
 
-teamHTML.push(internHTML)
+    teamHTML.push(internHTML)
 }
 
-// Loops through all user selections and send them to the relevent card function
+// Function which takes the teamArray from promt questions to makes a final 
+generatePage = (teamArray) => {
+    
+    // Loops through all user selections and send them to the relevent card function
     for (let i = 0; i < teamArray.length; i++) {
- 
-    if (teamArray[i].getRole() === "Manager"){
-        managerCard(teamArray[i])
-    }
-    if (teamArray[i].getRole() === "Engineer"){
-        engineerCard(teamArray[i])
-    }
-    if (teamArray[i].getRole() === "Intern"){
-        internCard(teamArray[i])
-    }
-
-}
-
-console.log(teamHTML)
-
+        
+        if (teamArray[i].getRole() === "Manager") {
+            managerCard(teamArray[i])
+        }
+        else if (teamArray[i].getRole() === "Engineer") {
+            engineerCard(teamArray[i])
+        }
+        else if (teamArray[i].getRole() === "Intern") {
+            internCard(teamArray[i])
+        }
+    };
+        
+    
     let team = `<!DOCTYPE html>
     <html lang="en">
     <head>
@@ -124,15 +121,15 @@ console.log(teamHTML)
     
     </body>
     </html>`;
-    
-    console.log(team)
-    createTeam(team)
-    
+
+
+   return team
+
 }
 
-
-// exports functions
+// exports function
 module.exports = generatePage
-// module.exports = generateTeam
+
+
 
 
